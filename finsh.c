@@ -6,7 +6,6 @@
 
 int main(void) {
   char *cmd = NULL;
-  char *argv[3];
   size_t buflen = 0;
   ssize_t nread;
 
@@ -15,7 +14,7 @@ int main(void) {
     nread = getline(&cmd, &buflen, stdin);
 
     if (nread == -1) {
-      printf("\nEOF detected. Detaching..\n.");
+      printf("\nEOF detected. Detaching...\n");
       break;
     }
 
@@ -26,10 +25,13 @@ int main(void) {
     pid_t pid = fork();
 
     if (pid == -1) {
-      perror("finsh: An error occurred.");
+      perror("fork");
       continue;
     } else if (pid == 0) {
-      execvp(cmd, argv);
+      char *args[] = {cmd, NULL};
+      execvp(cmd, args);
+      perror("finsh");
+      exit(EXIT_FAILURE);
     } else {
       int status;
       waitpid(pid, &status, 0);
