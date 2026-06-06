@@ -9,8 +9,11 @@ in function.
 | Version | Tasks to Complete                                                         | Status      |
 |---------|---------------------------------------------------------------------------|-------------|
 | v1      | Basic interpretation of single-argument coreutil commands (ls, pwd, etc.) | Done        |
-| v2      | Interpretation of multi-argument commands                                 | In-Progress |
+| v2      | Interpretation of multi-argument commands                                 | Done        |
 | v3      | Built-in commands (cd, pwd, exit, help, etc.)                             | Not Started |
 | v4      | Pipes                                                                     | Not Started |
 | v5      | Redirection (ls > example.txt, etc.)                                      | Not Started |
 | v6      | Signal handling, shell history, dynamic prompt, readline integration      | Not Started |
+
+## Additional To-Do Tweaks:
+- v2: Multi-argument commands work but don't respect things like quotes, for example: `git commit -m "Added x to y and z"` won't handle the message correctly. No idea where to start on fixing this but it's on the wishlist.
